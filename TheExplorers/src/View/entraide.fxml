@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.EntraideController">
+   <children>
+      <Label layoutX="88.0" layoutY="66.0" text="type d'entraide" />
+      <Label layoutX="108.0" layoutY="125.0" text="lieu" />
+      <Label layoutX="114.0" layoutY="181.0" text="date " />
+      <Label layoutX="98.0" layoutY="250.0" text="description" />
+      <JFXRadioButton fx:id="covoiturage" layoutX="193.0" layoutY="66.0" text="covoiturage" />
+      <JFXRadioButton fx:id="collocation" layoutX="310.0" layoutY="66.0" text="collocation" />
+      <JFXRadioButton fx:id="objet_perdu" layoutX="430.0" layoutY="66.0" text="objet perdu" />
+      <ChoiceBox fx:id="lieu" layoutX="181.0" layoutY="121.0" prefWidth="150.0" />
+      <DatePicker fx:id="date" layoutX="174.0" layoutY="177.0" />
+      <TextArea fx:id="description" layoutX="174.0" layoutY="226.0" prefHeight="83.0" prefWidth="200.0" />
+      <JFXButton fx:id="image" layoutX="235.0" layoutY="320.0" text="inserer une image" />
+      <JFXButton fx:id="passer_demande" layoutX="438.0" layoutY="333.0" text="Passer votre demande" />
+   </children>
+</AnchorPane>

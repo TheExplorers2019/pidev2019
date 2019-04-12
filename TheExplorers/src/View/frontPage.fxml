@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1231.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontPageController">
+   <children>
+      <AnchorPane fx:id="idDeconnection" prefHeight="150.0" prefWidth="1231.0" style="-fx-background-color: #399FEE;">
+         <children>
+            <MenuButton fx:id="menub" layoutX="963.0" layoutY="23.0" lineSpacing="2.0" mnemonicParsing="false" onAction="#EventHandler" prefHeight="60.0" prefWidth="89.0" style="-fx-background-color: transparent;">
+              <items>
+                <MenuItem fx:id="idMiseAJourCompte" mnemonicParsing="false" onAction="#MiseAJourCompte" text="configurer mon compte" />
+              </items>
+            </MenuButton>
+            <ImageView fx:id="idDeconnecter" fitHeight="54.0" fitWidth="45.0" layoutX="1145.0" layoutY="30.0" onMouseClicked="#Deconnecter" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logout.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="1070.0" layoutY="90.0" prefHeight="21.0" prefWidth="260.0" text="Se deconnecter/Se connecter">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="idimageuser" fitHeight="60.0" fitWidth="64.0" layoutX="971.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@myAccount.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="idLabelCompte" layoutX="955.0" layoutY="90.0" prefHeight="21.0" prefWidth="115.0" text="mon compte">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
