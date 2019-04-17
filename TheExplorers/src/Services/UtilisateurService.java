@@ -47,16 +47,11 @@ public class UtilisateurService implements IUtilisateur{
                       c.getNom() + "','" + c.getPrenom() + "','" + c.getVille() + "','"+ c.getDate_naissance() +"','" + c.getAdresse()+"','" +
                       c.getCode_postal()+"','" + c.getSexe()+"','" + c.getTelephone()+"','" + c.getCin()+"');";
 
-   //String sql = "INSERT INTO fos_user(username) VALUES ('"+c.getUsername()+"');";
+ 
   
     try {
       Statement stl = conn.createStatement();
-//             PreparedStatement ptl = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-//            ptl.executeUpdate();
-//            ResultSet generatedKeys = ptl.getGeneratedKeys();
-//                 generatedKeys.next();
-//                 
-//            System.out.println(generatedKeys.getInt(1));
+//            
           int rs =stl.executeUpdate(sql);
            QRCodeGenerator.generateQRCodeImage(c.getQr(),c.getUsername(),c.getEmail());
                    } catch (SQLException |IOException|WriterException ex) {
@@ -204,12 +199,10 @@ Utilisateur c = new Utilisateur();
                     c.setPrenom(rs.getString("prenom"));
                     c.setEmail(rs.getString("email"));
                     c.setPassword(rs.getString("password"));
-                                        c.setEnabled(rs.getInt("enabled"));
+                    c.setEnabled(rs.getInt("enabled"));
 
                     c.setAdresse(rs.getString("adresse"));
                   c.setRoles(rs.getString("roles"));
-                  c.setDepartement(rs.getString("departement"));
-                  c.setDomaine(rs.getString("domaine"));
                 }
             
             } catch (SQLException |NoSuchAlgorithmException ex) {
@@ -346,7 +339,7 @@ Utilisateur c = new Utilisateur();
     public void SupprimerCompteUtilisateur(String username) {
 
     String sql = "DELETE FROM `user` WHERE username ='"+username+"';";
-   //String sql = "INSERT INTO fos_user(username) VALUES ('"+c.getUsername()+"');";
+
   
     try {
             Statement stl = conn.createStatement();

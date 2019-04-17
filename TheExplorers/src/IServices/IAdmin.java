@@ -13,6 +13,7 @@ import Entities.Utilisateur;
  */
 public interface IAdmin {
     
-    public void AccepterJournaliste (Utilisateur u);
+    public void ajouterEmploye(Utilisateur c);
+     public boolean verifEmail(String Email);
     
 }

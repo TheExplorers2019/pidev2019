@@ -388,7 +388,7 @@ UserSession.getInstance(u).getUser();*/
          Random r = new Random();
 int valeur = 1000 + r.nextInt(9999 - 1000);
             System.out.println(valeur);
-       //  sendSMS sms=new sendSMS();
+         //sendSMS sms=new sendSMS();
          //sms.envoitSms(uop.getTelephone(), valeur);
          
 

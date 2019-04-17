@@ -165,7 +165,7 @@ public class UtilisateurInscription implements Initializable {
       
                        UtilisateurService s= new UtilisateurService();
 
-        System.out.println("You uvijinddddnvddddddddddddddddddddddddddddu me!");
+        System.out.println("");
           
         ControlesaisieJ cn=new ControlesaisieJ();
 String NomU = null,PrenomU = null,EmailU = null,Usernameu = null,AdrU = null,mdp1 = null,mdp2,SexeU = null,LienIm = null,roleu=null;

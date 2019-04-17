@@ -6,6 +6,7 @@
 package Controller;
 
 import Entities.Utilisateur;
+import Services.AdminService;
 //import Services.EmployeService;
 import Services.UtilisateurService;
 import com.jfoenix.controls.JFXButton;
@@ -50,11 +51,9 @@ import javafx.scene.control.ButtonType;
  * @author oumayma
  */
 public class FXMLInscriptionController implements Initializable{
-    ObservableList<String> ListVille = FXCollections.observableArrayList("Tunis","Sfax","Sousse","Kairouan","Bizerte","Gabès","La Soukra","Ariana","Sidi Hassine","El Mourouj","Gafsa","Raoued","Monastir","La Marsa","Ben Arous","Kasserine ","Douar Hicher","Djerba - Houmt Souk","Le Kram","Hammamet","Zarzis","Le Bardo","Médenine","Nabeul","Tataouine","Ben Gardane","Djerba - Midoun ","Béja","M'saken","Radès","Oued Ellil","Moknine","Le Kef","Menzel Bourguiba","Kalâa Kebira ","Sakiet Ezzit ","Mahdia ","Jemmal ","Ksar Hellal ","Sidi Bouzid ","Kélibia ","Sakiet Eddaïer ","La Goulette ","Jendouba ","El Aïn ","Hammam Sousse ","Hammam Lif ","Dar Chaâbane ","El Hamma","Gremda ","Bou Mhel el-Bassatine ","Menzel Temime ","Korba ","Métlaoui ","Soliman ","Téboulba ","Tozeur ","Ezzahra ","Kalâa Seghira ","Mateur ","El Ksar ","Thyna ","La Manouba ","Hammam Chott ","Siliana ","Douz ","Mornag ","Fériana ","Ksour Essef ","Djedeida ","Ras Jebel ","Ghannouch ","Tebourba ","Akouda ","Mégrine ","Den Den ","Chihia ","Redeyef ","Sbeïtla ","Grombalia ","Djerba - Ajim ","El Fahs ","Menzel Jemil ","Chebba ","Takelsa ","Ouerdanine ","Nefta ","Medjez el-Bab ","Bou Salem ","Béni Khiar ","Moularès ","El Jem ","Tinja ","Zaghouan ","Zaouiet Sousse ","Kébili ","Mornaguia ","Tabarka ","Ghardimaou ","Menzel Abderrahmane ","Sahline Moôtmar ","Souk Lahad ","Menzel Bouzelfa ","El Alia ","Thala ","Kalâat el-Andalous ","Bekalta ","Tajerouine ","Ezzouhour ","Carthage ","Zéramdine ","Bembla ","Mahrès ","Kerkennah ","Béni Khalled ","Chenini Nahal ","Meknassy ","Bennane-Bodheur ","El Guettar ","Makthar ","Testour ","Bou Arada ","Ksibet el-Médiouni ","Dahmani ","Sayada","Menzel Hayet","Messaadine"," Mdhilla"," Le Sers"," Bou Argoub"," Skhira"," Téboursouk"," Zriba"," Menzel Ennour"," Mareth"," Ksibet Thrayet"," Agareb"," Regueb"," Sidi Thabet"," Khniss"," Enfida"," Rejiche"," Métouia"," Hajeb El Ayoun"," Gaâfour"," Sidi Bou Ali"," Oudhref"," Bouficha"," Metline"," Raf Raf"," Jérissa"," Aïn Draham"," Ghomrassen"," Sened"," El Haouaria"," Tazarka"," Sidi Ali Ben Aoun"," Hammam Ghezèze"," Oueslatia"," Beni Hassen"," Khalidia"," Menzel Kamel"," Haffouz"," Sidi Ameur"," Bir Mcherga"," Kalaat Senan"," Amiret Hajjaj"," El Maâmoura"," Sbikha"," Bir Lahmar"," El Golâa"," Degache"," Zaouiet Djedidi"," El Krib"," Bou Hajla"," El Maâgoula"," Foussana"," El Hencha"," Nadhour"," Nouvelle Matmata"," Sidi Alouane"," Kerker"," Hergla"," El Bradâa"," Mezzouna"," Nefza"," Touza"," Jemna"," Jebiniana"," Menzel Bouzaiane"," Somâa"," Thélepte"," Zaouiet Kontoch"," Melloulèche"," Borj El Amri"," Sbiba"," Bir El Hafey"," Majel Bel Abbès"," El Batan"," El Hamma du Jérid"," Sakiet Sidi Youssef"," Remada"," Amiret Touazra"," Bouhjar"," Sidi Bou Saïd"," El Ksour"," Jilma"," Lamta"," Chorbane"," Sejnane"," Zarat"," Essouassi"," Ghar El Melh"," Djebel Oust"," Amiret El Fhoul"," Menzel Horr"," Amdoun"," Aousja"," Ouled Chamekh"," El Ghnada"," Azmour"," Nasrallah"," Bargou"," Bir Ali Ben Khalifa"," El Masdour"," Rouhia"," Dar Allouch"," Sidi Bennour"," Cherahil"," Jedelienne"," Bou Merdes"," Dehiba"," El Mida"," Goubellat"," Menzel Mehiri"," Fernana"," Kondar"," Menzel Fersi"," Korbous"," Haïdra"," Cebbala Ouled Asker"," Nebeur"," El Alâa"," Sidi Bou Rouis"," Graïba"," Hebira"," Sidi Makhlouf"," Beni Khedache"," Chebika","El Aroussa","Sidi El Hani"," Kesra"," Kalâat Khasba"," Ouchtata"," Slouguia"," Sidi Ismail"," Ouled Haffouz"," Oued Meliz"," Tamerza"," Menzel Chaker"," Touiref"," Matmata"," Menzel Salem"," Aïn Djeloula"," Echrarda","Beni M'Tir","Aachech"," Al Ahouaz-El Assouda"," Belkhir","Bouchemma"," El Amra"," El Ayoun","Ennasr","Ezzouhour"," Essaïda","Faouar","Fouchana ","Ghezala ","Hadjeb","Hassi El Ferid ","Hazeg Ellouza ","Hazoua ","Hkaima ","Joumine ","Lela ","Menzel El Habib ","Mohamedia ","Mnihla ","Nadhour Sidi Ali Ben Abed ","Ouabed Khazanet ","Rjim Maatoug ","Saouaf ","Sidi Aïch ","Sidi Zid ","Smâr ","Souk Jedid ","Teboulbou ","Thibar ","Tlelsa ","Utique ","Zarzis Nord ","Zelba");
+
+ObservableList<String> ListVille = FXCollections.observableArrayList("Tunis","Sfax","Sousse","Kairouan","Bizerte","Gabès","La Soukra","Ariana","Sidi Hassine","El Mourouj","Gafsa","Raoued","Monastir","La Marsa","Ben Arous","Kasserine ","Douar Hicher","Djerba - Houmt Souk","Le Kram","Hammamet","Zarzis","Le Bardo","Médenine","Nabeul","Tataouine","Ben Gardane","Djerba - Midoun ","Béja","M'saken","Radès","Oued Ellil","Moknine","Le Kef","Menzel Bourguiba","Kalâa Kebira ","Sakiet Ezzit ","Mahdia ","Jemmal ","Ksar Hellal ","Sidi Bouzid ","Kélibia ","Sakiet Eddaïer ","La Goulette ","Jendouba ","El Aïn ","Hammam Sousse ","Hammam Lif ","Dar Chaâbane ","El Hamma","Gremda ","Bou Mhel el-Bassatine ","Menzel Temime ","Korba ","Métlaoui ","Soliman ","Téboulba ","Tozeur ","Ezzahra ","Kalâa Seghira ","Mateur ","El Ksar ","Thyna ","La Manouba ","Hammam Chott ","Siliana ","Douz ","Mornag ","Fériana ","Ksour Essef ","Djedeida ","Ras Jebel ","Ghannouch ","Tebourba ","Akouda ","Mégrine ","Den Den ","Chihia ","Redeyef ","Sbeïtla ","Grombalia ","Djerba - Ajim ","El Fahs ","Menzel Jemil ","Chebba ","Takelsa ","Ouerdanine ","Nefta ","Medjez el-Bab ","Bou Salem ","Béni Khiar ","Moularès ","El Jem ","Tinja ","Zaghouan ","Zaouiet Sousse ","Kébili ","Mornaguia ","Tabarka ","Ghardimaou ","Menzel Abderrahmane ","Sahline Moôtmar ","Souk Lahad ","Menzel Bouzelfa ","El Alia ","Thala ","Kalâat el-Andalous ","Bekalta ","Tajerouine ","Ezzouhour ","Carthage ","Zéramdine ","Bembla ","Mahrès ","Kerkennah ","Béni Khalled ","Chenini Nahal ","Meknassy ","Bennane-Bodheur ","El Guettar ","Makthar ","Testour ","Bou Arada ","Ksibet el-Médiouni ","Dahmani ","Sayada","Menzel Hayet","Messaadine"," Mdhilla"," Le Sers"," Bou Argoub"," Skhira"," Téboursouk"," Zriba"," Menzel Ennour"," Mareth"," Ksibet Thrayet"," Agareb"," Regueb"," Sidi Thabet"," Khniss"," Enfida"," Rejiche"," Métouia"," Hajeb El Ayoun"," Gaâfour"," Sidi Bou Ali"," Oudhref"," Bouficha"," Metline"," Raf Raf"," Jérissa"," Aïn Draham"," Ghomrassen"," Sened"," El Haouaria"," Tazarka"," Sidi Ali Ben Aoun"," Hammam Ghezèze"," Oueslatia"," Beni Hassen"," Khalidia"," Menzel Kamel"," Haffouz"," Sidi Ameur"," Bir Mcherga"," Kalaat Senan"," Amiret Hajjaj"," El Maâmoura"," Sbikha"," Bir Lahmar"," El Golâa"," Degache"," Zaouiet Djedidi"," El Krib"," Bou Hajla"," El Maâgoula"," Foussana"," El Hencha"," Nadhour"," Nouvelle Matmata"," Sidi Alouane"," Kerker"," Hergla"," El Bradâa"," Mezzouna"," Nefza"," Touza"," Jemna"," Jebiniana"," Menzel Bouzaiane"," Somâa"," Thélepte"," Zaouiet Kontoch"," Melloulèche"," Borj El Amri"," Sbiba"," Bir El Hafey"," Majel Bel Abbès"," El Batan"," El Hamma du Jérid"," Sakiet Sidi Youssef"," Remada"," Amiret Touazra"," Bouhjar"," Sidi Bou Saïd"," El Ksour"," Jilma"," Lamta"," Chorbane"," Sejnane"," Zarat"," Essouassi"," Ghar El Melh"," Djebel Oust"," Amiret El Fhoul"," Menzel Horr"," Amdoun"," Aousja"," Ouled Chamekh"," El Ghnada"," Azmour"," Nasrallah"," Bargou"," Bir Ali Ben Khalifa"," El Masdour"," Rouhia"," Dar Allouch"," Sidi Bennour"," Cherahil"," Jedelienne"," Bou Merdes"," Dehiba"," El Mida"," Goubellat"," Menzel Mehiri"," Fernana"," Kondar"," Menzel Fersi"," Korbous"," Haïdra"," Cebbala Ouled Asker"," Nebeur"," El Alâa"," Sidi Bou Rouis"," Graïba"," Hebira"," Sidi Makhlouf"," Beni Khedache"," Chebika","El Aroussa","Sidi El Hani"," Kesra"," Kalâat Khasba"," Ouchtata"," Slouguia"," Sidi Ismail"," Ouled Haffouz"," Oued Meliz"," Tamerza"," Menzel Chaker"," Touiref"," Matmata"," Menzel Salem"," Aïn Djeloula"," Echrarda","Beni M'Tir","Aachech"," Al Ahouaz-El Assouda"," Belkhir","Bouchemma"," El Amra"," El Ayoun","Ennasr","Ezzouhour"," Essaïda","Faouar","Fouchana ","Ghezala ","Hadjeb","Hassi El Ferid ","Hazeg Ellouza ","Hazoua ","Hkaima ","Joumine ","Lela ","Menzel El Habib ","Mohamedia ","Mnihla ","Nadhour Sidi Ali Ben Abed ","Ouabed Khazanet ","Rjim Maatoug ","Saouaf ","Sidi Aïch ","Sidi Zid ","Smâr ","Souk Jedid ","Teboulbou ","Thibar ","Tlelsa ","Utique ","Zarzis Nord ","Zelba");
    
-    ObservableList<String> ListDomaine = FXCollections.observableArrayList("","yoga","dessin","danse","peinture");
-    
-    
     private JFXTextField fName;
     private JFXTextField lName;
     @FXML
@@ -89,12 +88,6 @@ public class FXMLInscriptionController implements Initializable{
     @FXML
     private DatePicker dateNais;
     @FXML
-    private ChoiceBox<String> DomaineBox;
-    @FXML
-    private JFXRadioButton Proffeseurs;
-    @FXML
-    private JFXRadioButton Maintenace;
-    @FXML
     private Label LNom;
     @FXML
     private Label LPren;
@@ -113,19 +106,12 @@ public class FXMLInscriptionController implements Initializable{
     @FXML
     private Label Lsexe;
     @FXML
-    private Label LDepartement;
-    @FXML
     private Label LDate;
-    @FXML
-    private ToggleGroup Departement;
-    @FXML
-    private Label LDomaine;
-    
-    
+   
+  
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-           DomaineBox.setValue("");
-           DomaineBox.setItems(ListDomaine);
+         
             villeBox.setValue("Tunis");
             villeBox.setItems(ListVille);
     }
@@ -139,11 +125,12 @@ public class FXMLInscriptionController implements Initializable{
 //        EmployeService es=new EmployeService();
         /************************************************************************/
         
-        ControlesaisieJ cn=new ControlesaisieJ();
-String NomU = null,PrenomU = null,EmailU = null,Usernameu = null,AdrU = null,mdp1 = null,mdp2,SexeU = null,LienIm = null,roleu=null,DepartementU=null;
-int codeposta = 0,teli = 0,cin = 0;
-   java.sql.Date daten = null;
-int v=0;
+String NomU = null,PrenomU = null,EmailU = null,Usernameu = null,AdrU = null,mdp1 = null,mdp2,SexeU = null,LienIm = null,roleu=null;
+       int codeposta = 0,teli = 0,cin = 0;
+       java.sql.Date daten = null;
+       int v=0;
+       AdminService As=new AdminService();
+       ControlesaisieJ cn=new ControlesaisieJ();
 
         //**********************************************************
          if (!Nom.getText().equals("") && cn.testnomprenom(Nom.getText())){
@@ -169,10 +156,10 @@ int v=0;
          }
          
          //**********************************************************
-         /*
+      
          
             if (!email.getText().equals("") && cn.mailformat(email.getText())){
-               if(es.verifEmail(email.getText())){
+               if(As.verifEmail(email.getText())){
                 
                 this.LEmail.setText("");
                  EmailU=email.getText();
@@ -186,7 +173,7 @@ int v=0;
              
              this.LEmail.setText("* Email erroné");
 
-         }*/
+         }
          
          //**********************************************************
             /*if (!username.getText().equals("") && cn.testUsername(username.getText())){
@@ -277,11 +264,7 @@ if(pwd1.getText().equals(pwd2.getText())){
 }
         
         
-//        System.out.println("/////////////d");
-//        System.out.println();
-//       //            RadioButton button = (RadioButton) sexe.getSelectedToggle();
-//         //           SexeU=button.getText();
-//
+
 //        System.out.println("/////////////d");
  if (sexe.selectedToggleProperty().getValue() != null){
                RadioButton button = (RadioButton) sexe.getSelectedToggle();
@@ -296,7 +279,7 @@ if(pwd1.getText().equals(pwd2.getText())){
  
  
  
- if (Departement.selectedToggleProperty().getValue() != null){
+ /*if (Departement.selectedToggleProperty().getValue() != null){
                RadioButton buttondep = (RadioButton) Departement.getSelectedToggle();
         DepartementU=buttondep.getText();
         this.LDepartement.setText("");
@@ -308,7 +291,7 @@ if(pwd1.getText().equals(pwd2.getText())){
         }
  /************************************************************************/
  
- if (Departement.selectedToggleProperty().getValue() != null){
+ /*if (Departement.selectedToggleProperty().getValue() != null){
  if (DepartementU.equals("Proffeseurs")){
      if (DomaineBox.getValue().equals("")){
          v--;
@@ -320,18 +303,21 @@ if(pwd1.getText().equals(pwd2.getText())){
 }
  }
      else {
-             this.LDomaine.setText("");}}
+             this.LDomaine.setText("");}}*/
  
         System.out.println(v);
-       if (v==11){
+       if (v==10){
                   Random r = new Random();
-int valeur = 1000 + r.nextInt(9999 - 1000);
-            System.out.println(valeur);
+                  int valeur = 1000 + r.nextInt(9999 - 1000);
+                  System.out.println(valeur);
             
          Utilisateur c1=new Utilisateur(EmailU,EmailU,mdp1,"",NomU,PrenomU,villeBox.getValue(),daten,AdrU,codeposta,SexeU,teli,cin);
-      if (DepartementU.equals("Proffeseurs")){
-         c1.setDomaine(DomaineBox.getValue());}
-         c1.setDepartement(DepartementU);
+           //System.out.println(c1);  
+         //  System.out.println("//////////////");
+// if (DepartementU.equals("Proffeseurs")){
+        // c1.setDomaine(DomaineBox.getValue());}
+       //  c1.setDepartement(DepartementU); 
+         As.ajouterEmploye(c1);
 //         es.ajouterEmploye(c1);
         
     

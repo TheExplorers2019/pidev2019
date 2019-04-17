@@ -38,13 +38,7 @@ public class UserSession  {
     
         u=new Utilisateur();
     }
-    
-   /* public static UserSession getInstance(Utilisateur uu) throws ClassNotFoundException{
-        if( instance == null)
-            instance = new UserSession(uu);
-        
-        return instance;
-    }*/
+
     
     public Utilisateur getUser() {
         return u;

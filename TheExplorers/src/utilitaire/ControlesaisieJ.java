@@ -163,7 +163,7 @@ public class ControlesaisieJ {
 
             java.sql.Date d=new Date(System.currentTimeMillis());
 //System.out.println(((d.getTime()- date.getTime())/86400000)/365);
-		return (((d.getTime()- date.getTime())/86400000)/365)>=18;
+		return (((d.getTime()- date.getTime())/86400000)/365)>=1;
 		
 	}
         
@@ -173,6 +173,10 @@ public class ControlesaisieJ {
 		java.util.Date dateEXP = d2;
 		return dateEMB.compareTo(dateEXP);
 	}
-        
+        public boolean datenow(java.sql.Date date){
+        java.sql.Date d=new Date(System.currentTimeMillis());
+        return (d.getTime()> date.getTime());
+
+        }
         
 }

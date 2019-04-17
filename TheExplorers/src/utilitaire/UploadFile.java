@@ -50,15 +50,5 @@ public class UploadFile {
         httpclient.getConnectionManager().shutdown();
        return "www/upload/"+FileName; 
     }
- /*
-  public static void main(String[] args)
-  {
-      try {
-        UploadFile.upload();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-  }
-return "aaa";
-  }*/
+
 }

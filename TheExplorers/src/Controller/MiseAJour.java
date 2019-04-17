@@ -35,7 +35,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import utilitaire.ControlesaisieJ;
-import utilitaire.Upload;
+//import utilitaire.Upload;
 import utilitaire.UploadFile;
 import utilitaire.UserSession;
 

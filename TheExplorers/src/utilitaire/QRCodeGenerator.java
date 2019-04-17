@@ -44,10 +44,10 @@ String s=path.toString();
           try{
               System.out.println("ohifhifhvihgvivjgo5666666666");
             String host ="smtp.gmail.com" ;
-            String user = "pidevfrioui2019@gmail.com";
-            String pass = "oumaymafrioui1";
+            String user = "pidevesprit2019@gmail.com";
+            String pass = "Lessimpson1997";
             String to = mail;
-            String from = "pidevfrioui2019@gmail.com";
+            String from = "pidevesprit2019@gmail.com";
             String subject = "Bienvenue sur notre platforme";
             String messageText = "Your Is Test Email :";
             boolean sessionDebug = false;
@@ -107,14 +107,5 @@ String s=path.toString();
         }
 
     }
-//
-//    public static void main(String[] args) {
-//        try {
-//            generateQRCodeImage("FERNANAAAAAAAA");
-//        } catch (WriterException e) {
-//            System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
-//        } catch (IOException e) {
-//            System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
-//        }
-//    }
+
 }
